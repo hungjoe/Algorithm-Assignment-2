@@ -1,0 +1,57 @@
+import time
+
+def fibonacci_recursive(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+
+execution_times_recursive = []
+
+for i in range(1, 101):
+    start_time = time.time()
+    fibonacci_recursive(i)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    execution_times_recursive.append(execution_time)
+
+print(execution_times_recursive)
+
+def fibonacci_bottom_up(n):
+    fib = [0, 1]
+    for i in range(2, n + 1):
+        fib.append(fib[i - 1] + fib[i - 2])
+    return fib[n]
+
+execution_times_bottom_up = []
+
+for i in range(1, 101):
+    start_time = time.time()
+    fibonacci_bottom_up(i)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    execution_times_bottom_up.append(execution_time)
+
+print(execution_times_bottom_up)
+
+import matplotlib.pyplot as plt
+
+# 設置 x 軸的數值，從 1 到 100
+x_values = list(range(1, 101))
+
+# 繪製自頂向下方法的執行時間折線圖
+plt.plot(x_values, execution_times_recursive, label='Top-down (Recursive)', color='blue')
+
+# 繪製自底向上方法的執行時間折線圖
+plt.plot(x_values, execution_times_bottom_up, label='Bottom-up (Dynamic Programming)', color='red')
+
+# 添加標題和標籤
+plt.title('Execution Time of Fibonacci Numbers')
+plt.xlabel('Fibonacci Number (n)')
+plt.ylabel('Execution Time (seconds)')
+
+# 添加圖例
+plt.legend()
+
+# 顯示圖形
+plt.show()

@@ -7,9 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1d58hOAsI1xBnCf1iEqKxmAyfNSMKZp7r
 """
 
-#題目一
+# 題目一
 import time
 
+# Top-Down
 def fibonacci_recursive(n):
     if n <= 1:
         return n
@@ -28,6 +29,7 @@ for i in range(1, 101):
 print(execution_times_recursive)
 
 import time
+# Bottom-up
 def fibonacci_bottom_up(n):
     fib = [0, 1]
     for i in range(2, n + 1):
@@ -50,10 +52,10 @@ import matplotlib.pyplot as plt
 # 設置 x 軸的數值，從 1 到 100
 x_values = list(range(1, 101))
 
-# 繪製自頂向下方法的執行時間折線圖
+# 繪製Top-Down方法的執行時間折線圖
 plt.plot(x_values, execution_times_recursive, label='Top-down (Recursive)', color='blue')
 
-# 繪製自底向上方法的執行時間折線圖
+# 繪製Bottom-up方法的執行時間折線圖
 plt.plot(x_values, execution_times_bottom_up, label='Bottom-up (Dynamic Programming)', color='red')
 
 # 添加標題和標籤
